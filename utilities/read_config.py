@@ -1,11 +1,9 @@
 import configparser
 
-config = configparser.RawConfigParser()
-config.read(".\\configurations\\config.ini")
 
 class Read_Config:
     config = configparser.ConfigParser()
-    config.read(".\\data\\login.ini")
+    config.read(".\\config\\login_config.ini")
 
     @staticmethod
     def get_login_url_page():
@@ -13,8 +11,8 @@ class Read_Config:
 
     # all
     @staticmethod
-    def all_ecommerce_login(section):
-        email = Read_Config.config.get(section, 'username')
+    def get_all_login_data(section):
+        email = Read_Config.config.get(section, 'email')
         password = Read_Config.config.get(section, 'password')
-        exp_result = Read_Config.config.get(section,'expected_result')
+        exp_result = Read_Config.config.get(section,'exp_result')
         return email, password, exp_result
