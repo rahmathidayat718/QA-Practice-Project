@@ -1,3 +1,4 @@
+import time
 from venv import logger
 
 from base.base_driver import BaseDriver
@@ -7,7 +8,6 @@ from utilities.custom_logger import Log_Maker
 
 class LoginEcommercePage(BaseDriver):
 
-    # Inisialisasi logger
     logger = Log_Maker()
 
     def enter_email(self, email):
@@ -19,7 +19,7 @@ class LoginEcommercePage(BaseDriver):
         logger.info("Entered Password : " + password)
 
     def click_btn_submit(self):
-        self.click(Lc.btn_submit_id)
+        self.click(Lc.btn_submit_xpath)
         logger.info("Clicked Submit")
 
     def validation_page(self):
@@ -43,9 +43,15 @@ class LoginEcommercePage(BaseDriver):
         return error_element.text
 
     # test page
-    def login(self, email, password):
-        logger.info("Start Test")
-        self.enter_email(email)
-        self.enter_password(password)
-        self.click_btn_submit()
-        logger.info("End Test")
+    def login_ecommerce(self, email, password, section_name=None):
+        if section_name:
+            logger.info(f"== Start Test For Section: {section_name} ==")
+        else:
+            logger.info("Start Test")
+            self.enter_email(email)
+            self.enter_password(password)
+            self.click_btn_submit()
+            if section_name:
+                logger.info(f"== End Test For Section: {section_name} ==")
+            else:
+                logger.info("End Test")

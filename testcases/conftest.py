@@ -7,7 +7,7 @@ from testcases.read_properties import Read_Config
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Edge()
+    driver = webdriver.Chrome()
     driver.maximize_window()
     yield driver
     driver.quit()
@@ -20,10 +20,9 @@ def config_data():
 
 @pytest.fixture(
     params=Read_Config.get_login_ecommerce_data(),
-    ids=lambda param: param[3] if isinstance(param, (tuple, list)) and len(param) > 3 else "unknown"
+    ids=lambda param: param[3]
 )
 def data_login_ecommerce(request):
-    print(f"Fixture param: {request.param}")  # Debugging
     return request.param
 
 
