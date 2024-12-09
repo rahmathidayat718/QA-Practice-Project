@@ -1,4 +1,5 @@
 from selenium.common import TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -40,3 +41,22 @@ class BaseDriver:
             return None
     def click(self, locator):
         self.find_element(locator).click()
+
+
+    # Scroll
+    def scroll_by_pixel(self, x=0, y=500):
+        """Scroll by pixel (default is 500px down)."""
+        self.driver.execute_script(f"window.scrollBy({x}, {y});")
+
+    def scroll_to_element(self, element):
+        """Scroll to a specific element."""
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    def scroll_to_bottom(self):
+        """Scroll to the bottom of the page."""
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def scroll_with_action_chains(self, x=0, y=500):
+        """Scroll using ActionChains."""
+        actions = ActionChains(self.driver)
+        actions.scroll_by_amount(x, y).perform()

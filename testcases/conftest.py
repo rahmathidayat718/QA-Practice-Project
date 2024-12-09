@@ -18,12 +18,6 @@ def config_data():
         "login_url_page": Read_Config.get_login_url_page(),
     }
 
-@pytest.fixture(
-    params=Read_Config.get_login_ecommerce_data(),
-    ids=lambda param: param[3]
-)
-def data_login_ecommerce(request):
-    return request.param
 
 
 

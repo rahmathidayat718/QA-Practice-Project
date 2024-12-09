@@ -11,3 +11,7 @@ class Locator_Login:
     error_incorrect = (By.XPATH, '//*[@id="message"]')
     error_empty_password = (By.XPATH, '//*[@id="message"]')
     error_empty_username = (By.XPATH, '//*[@id="message"]')
+
+class LocatorAddToCart:
+    # Locator AddToCart
+    handphone_element = (By.XPATH, '//*[@id="prooood"]/section[2]/div/div[4]/span')
