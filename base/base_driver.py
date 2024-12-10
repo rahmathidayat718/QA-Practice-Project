@@ -44,19 +44,20 @@ class BaseDriver:
 
 
     # Scroll
-    def scroll_by_pixel(self, x=0, y=500):
-        """Scroll by pixel (default is 500px down)."""
-        self.driver.execute_script(f"window.scrollBy({x}, {y});")
-
-    def scroll_to_element(self, element):
-        """Scroll to a specific element."""
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+    def scroll_to_element(self, locator):
+        """Scroll ke elemen tertentu menggunakan ActionChains"""
+        element = self.driver.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
 
     def scroll_to_bottom(self):
-        """Scroll to the bottom of the page."""
+        """Scroll ke bagian bawah halaman menggunakan JavaScript"""
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def scroll_with_action_chains(self, x=0, y=500):
-        """Scroll using ActionChains."""
-        actions = ActionChains(self.driver)
-        actions.scroll_by_amount(x, y).perform()
+    def scroll_by_offset(self, x=0, y=500):
+        """Scroll halaman secara manual dengan offset"""
+        self.driver.execute_script(f"window.scrollBy({x}, {y});")
+
+    def scroll_to_top(self):
+        """Scroll ke atas halaman (paling atas)"""
+        self.driver.execute_script("window.scrollTo(0, 0);")
