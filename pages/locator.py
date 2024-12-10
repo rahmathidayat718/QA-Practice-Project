@@ -19,3 +19,4 @@ class LocatorAddToCart:
     add_handphone2 = (By.XPATH, '//*[@id="prooood"]/section[2]/div/div[5]/div/button')
     validasi_hp1 = (By.XPATH, '//*[@id="prooood"]/section[1]/div[2]/div[1]/div[1]/span')
     validasi_hp2 = (By.XPATH, '//*[@id="prooood"]/section[1]/div[2]/div[2]/div[1]/span')
+    checkout = (By.XPATH, '//*[@id="prooood"]/section[1]/button')
