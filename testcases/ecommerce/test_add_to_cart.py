@@ -1,5 +1,4 @@
 import time
-from pages.locator import LocatorAddToCart as Lc
 from pages.ecommerce.add_to_cart_page import AddToCart
 from pages.ecommerce.login_ecommerce_page import LoginEcommercePage
 from testcases.read_properties import Read_Config

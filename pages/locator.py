@@ -20,3 +20,12 @@ class LocatorAddToCart:
     validasi_hp1 = (By.XPATH, '//*[@id="prooood"]/section[1]/div[2]/div[1]/div[1]/span')
     validasi_hp2 = (By.XPATH, '//*[@id="prooood"]/section[1]/div[2]/div[2]/div[1]/span')
     checkout = (By.XPATH, '//*[@id="prooood"]/section[1]/button')
+
+class ShippingDetails:
+    phone_number = (By.XPATH, '//*[@id="phone"]')
+    street = (By.XPATH, '//*[@id="shippingForm"]/div[2]/input')
+    city = (By.XPATH, '//*[@id="shippingForm"]/div[3]/input')
+    select_country = (By.XPATH, '//*[@id="countries_dropdown_menu"]')
+    submit_order = (By.XPATH, '//*[@id="submitOrderBtn"]')
+    submit_validation = (By.XPATH, '//*[@id="message"]/text()[1]')
+    checkout = (By.XPATH, '//*[@id="prooood"]/section[1]/button')

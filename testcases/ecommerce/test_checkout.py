@@ -1,9 +1,12 @@
 import time
+from venv import logger
+
 from pages.ecommerce.add_to_cart_page import AddToCart
 from pages.ecommerce.checkout_page import CheckoutPage
 from pages.ecommerce.login_ecommerce_page import LoginEcommercePage
 from testcases.read_properties import Read_Config
 from utilities.custom_logger import Log_Maker
+from utilities.excel_reader import ExcelReader
 
 
 class TestCheckout:
@@ -29,3 +32,12 @@ class TestCheckout:
 
         # Checkout
         checkout.checkout_item()
+
+        # Details
+        excel_reader = ExcelReader("testdata/qa-practice-automation.xlsx")
+        test_data = excel_reader.get_data(sheet_name="submit_order")
+        for phone_number, street, city, country, Exp_result in test_data:
+            checkout.submit_order(phone_number, street, city, country)
+
+        #validasi
+        checkout.validation_submit()
